@@ -7,7 +7,7 @@ img = Image.open("img/result.jpg")
 draw = ImageDraw.Draw(img)
 width, height = img.size
 font_size = 40
-font_path = "chalk_font.ttf"
+font_path = "ChalkFont-Regular.ttf"
 text = "It takes 8 minutes 17 seconds for light to travel from the Sun’s surface to the Earth"
 text_wrapped = textwrap.wrap(text, width=42)
 font = ImageFont.truetype(font_path, font_size)
