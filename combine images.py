@@ -8,7 +8,7 @@ thumb_size = 50
 
 for line in range(nr_lines):
     for col in range(nr_columns):
-        if col > 3 and col < 20 and line > 3 and line < 12:
+        if 3 < col < 20 and 3 < line < 12:
             pass
         else:
             image_to_use = randint(1, 57)
@@ -17,7 +17,6 @@ for line in range(nr_lines):
             x = col * thumb_size
             y = line * thumb_size
             w, h = img.size
-            print('pos {0},{1} size {2},{3}'.format(x, y, w, h))
             result.paste(img, (x, y, x + w, y + h))
 
 result.save('img/result.jpg')
