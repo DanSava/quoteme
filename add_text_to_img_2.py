@@ -5,17 +5,22 @@ from utils import construct_image
 import textwrap
 
 thumb_paths = ["img/%d.jpg" % (x+1) for x in range(57)]
+text = "For the first time in human history, gene-editing has been performed to fix a mutation for an inherited disease in embryos. Using a powerful tool called Crispr-Cas9, scientists successfully altered the DNA in defective embryos so they were no longer programmed to develop congenital heart failure."
+text_wrapped = textwrap.wrap(text, width=40)
+print(len(text_wrapped))
+thumb_size = 50
+img_width = 1200
+img_height = 800
 
-img = construct_image(thumbs_path_list=thumb_paths, clip_rect=(150, 200, 1000, 450))
+img = construct_image(width=img_width, height=img_height, thumbs_path_list=thumb_paths, clip_rect=(150, 150, 1000, 200 + (thumb_size * len(text_wrapped))))
 draw = ImageDraw.Draw(img)
 width, height = img.size
-font_size = 40
+font_size = 38
 font_path = "fonts/ChalkFont-Regular.ttf"
-text = "It takes 8 minutes 17 seconds for light to travel from the Sun’s surface to the Earth"
-text_wrapped = textwrap.wrap(text, width=42)
 font = ImageFont.truetype(font_path, font_size)
 for line_nr, text_line in enumerate(text_wrapped):
-    draw.text((width * 0.175, 300 + line_nr * (font_size + 10)),
+    print(len(text_line), text_line)
+    draw.text((200+10, 200 + line_nr * (font_size + 10)),
               text_line,
               (0, 0, 0),
               font=font)
