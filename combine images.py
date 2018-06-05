@@ -1,5 +1,5 @@
 from PIL import Image
-from random import randint
+from random import randint, shuffle
 
 result = Image.new("RGB", (1200, 800), color='white')
 nr_lines = 16
