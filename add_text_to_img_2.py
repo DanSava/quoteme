@@ -1,7 +1,7 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from util import construct_image
+from util import construct_image, add_logo_to_image
 import textwrap
 
 thumb_paths = ["img/%d.jpg" % (x+1) for x in range(57)]
@@ -25,4 +25,8 @@ for line_nr, text_line in enumerate(text_wrapped):
               (0, 0, 0),
               font=font)
 
-img.save('little_bits_sci1.jpg')
+# Adding the little bits log to the image
+img = add_logo_to_image(img, "logo/logo.png", thumb_size)
+
+# Saving the image to disk
+img.save('output/little_bits_sci1.jpg')

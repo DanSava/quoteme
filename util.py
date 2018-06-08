@@ -25,3 +25,11 @@ def construct_image(width, height, thumbs_path_list, thumb_size, clip_rect=(150,
                 result.paste(img, (x, y, x + w, y + h))
                 array_pos += 1
     return result
+
+
+def add_logo_to_image(img, logo_path,logo_size):
+    img_width, img_height = img.size
+    logo = Image.open(logo_path)
+    logo.thumbnail((logo_size, logo_size), Image.ANTIALIAS)
+    img.paste(logo, (img_width - logo_size, img_height - logo_size, img_width, img_height))
+    return img
