@@ -1,19 +1,34 @@
 var steem = require('steem');
 
+// Loading parameters
+
+var title = ""
+var post_no = undefined
+process.argv.forEach(function (val, index, array) {
+    if (val.includes("title=")) {
+        title_words = val.split("=")[1].split(" ")
+        for (let index = 0; index < 4; index++) {
+            title = title + title_words[index] + " ";            
+        }
+        title = title + "..."
+    } else if ( val.includes("postNo=")) {
+          post_no = val.split("=")[1]
+      }
+    });
+
 const wif = process.env.SPK
 const parentAuthor  = "" // Leave empty for new post
 const author = "littlebitscience"
-const permlink = "little-bitscience-facts-test-2"
-const title = "Here we go again!"
+const permlink = `little-bitscience-facts-${post_no}`
 const body = `
 
-# ${title}
+# Here we go again!
 
 ----
 
 ***How about them apples*** 
 
-![](https://steemitimages.com/0x0/https://spee.ch/a/science-facts-1.jpeg)
+![](https://spee.ch/a/science-facts-1.jpeg)
 
 ### So you liked this small nugget of knowledge. What next?
 I will try to post daily a small an interesting science fact. So you can follow me if you want to see more. 
@@ -24,7 +39,8 @@ Let me know how I can improve.
 >Nobody starts out knowledgeable, we all struggle to gain knowledge as we move forward! 
 
 ### Check out some older *little* science facts:
-[older posts link here]
+[Surprise me!](https://steemit.com/steemjs/@littlebitscience/little-bitscience-facts-${post_no - 1})
+[Surprise me!](https://steemit.com/steemjs/@littlebitscience/little-bitscience-facts-${post_no - 2})
 
 <table>
 <tr><td>Pat on the head</td><td><b>Upvote this post</b></td><td> https://media1.tenor.com/images/153e9bdd80008e8c0f94110450fcbf98/tenor.gif?itemid=10534102 </td></tr>
