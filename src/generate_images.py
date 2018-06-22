@@ -16,4 +16,4 @@ font_size = 38
 for x in range(len(data['facts'])):
     image = build_image(img_width, img_height, data['facts'][x], text_wrap_width, font_path, font_size, thumb_size)
     # Saving the image to disk
-    image.save('../output/lbs_%d.jpg' % x)
+    image.save('../output/static/lbs_%d.jpg' % x)

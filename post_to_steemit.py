@@ -4,7 +4,7 @@ import json
 with open('factsdb/facts.json') as f:
     data = json.load(f)
 
-nr = 3
+nr = 4
 post_no = "postNo=%d" % (nr + 3)
 title = "title=%s" % data['facts'][nr]
 
